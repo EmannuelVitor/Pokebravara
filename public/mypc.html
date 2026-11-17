@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeBravara - Meu PC</title>
+    <link rel="stylesheet" href="mypc.css">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body class="game-page" data-page="mypc">
+    <p id="page-feedback" class="page-feedback error" role="alert" hidden><span></span> <a class="back-button" href="menu.html">Voltar ao menu</a></p>
+
+    <div id="spinner" class="spinner-container">
+        <div class="spinner"></div>
+        <p>Carregando…</p>
+    </div>
+
+    <!-- Container para quando o PC está bloqueado -->
+    <div id="pc-locked-container" class="locked-container hidden">
+        <svg class="lock-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        <h1>PC Bloqueado</h1>
+        <p>Seu acesso ao Sistema de Armazenamento Pokémon ainda não foi liberado. Fale com o Professor da sua campanha.</p>
+        <a href="menu.html" class="back-button">Voltar ao Menu</a>
+    </div>
+
+    <!-- Container principal da página -->
+    <div id="pc-unlocked-container" class="container hidden">
+        <header>
+            <h1 id="trainer-name-display">Meu PC Pokémon</h1>
+        </header>
+
+        <main class="pc-layout">
+            <section class="team-section">
+                <h2>Meu Time</h2>
+                <div id="team-grid" class="pokemon-grid">
+                    <!-- 6 slots para o time do jogador -->
+                </div>
+            </section>
+            <section class="pc-section">
+                <h2>PC Box 1</h2>
+                <div id="pc-grid" class="pokemon-grid pc-box">
+                    <!-- 50 slots para o PC -->
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Modal de Detalhes do Pokémon -->
+    <div id="details-modal" class="modal-overlay hidden" aria-labelledby="details-name">
+        <div class="modal-content">
+            <button id="details-close-btn" class="close-btn" aria-label="Fechar">&times;</button>
+            <div class="panel-content">
+                <img id="details-image" src="" alt="Pokémon Sprite">
+                <h3 id="details-name"></h3>
+                <p id="details-info"></p>
+                <div class="details-stats" id="details-stats"></div>
+                <div class="details-actions">
+                    <button id="move-to-pc-btn" class="gm-btn hidden">Mover para o PC</button>
+                    <button id="move-to-team-btn" class="gm-btn hidden">Mover para o Time</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    
+    <script defer src="database.js"></script>
+    <script defer src="utils.js"></script>
+    <script defer src="firebase-config.js"></script>
+    <script defer src="toast.js"></script>
+    <script defer src="nav.js"></script>
+    <script defer src="game-ui.js"></script>
+    <script defer src="mypc.js"></script>
+</body>
+</html>
+

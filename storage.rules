@@ -1,0 +1,15 @@
+rules_version = '2';
+
+// REVISAR ANTES DE PUBLICAR: compare com as regras atuais do console e teste o cadastro.
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Foto do personagem: cada usuário só grava na própria pasta, imagem até 5 MB.
+    match /profile_images/{userId}/{fileName} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null
+        && request.auth.uid == userId
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/(png|jpeg|gif|webp)');
+    }
+  }
+}

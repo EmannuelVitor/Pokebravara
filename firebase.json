@@ -1,0 +1,36 @@
+{
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "hosting": {
+    "site": "pokemonbravara",
+    "public": "app/dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "redirects": [
+      { "source": "/index.html", "destination": "/", "type": 301 },
+      { "source": "/menu.html", "destination": "/", "type": 301 },
+      { "source": "/id-treinador.html", "destination": "/ficha", "type": 301 },
+      { "source": "/time.html", "destination": "/time", "type": 301 },
+      { "source": "/mybag.html", "destination": "/mochila", "type": 301 },
+      { "source": "/mypc.html", "destination": "/pc", "type": 301 },
+      { "source": "/pokedex.html", "destination": "/pokedex", "type": 301 },
+      { "source": "/trainers.html", "destination": "/treinadores", "type": 301 },
+      { "source": "/pc.html", "destination": "/treinadores", "type": 301 },
+      { "source": "/bag.html", "destination": "/treinadores", "type": 301 }
+    ],
+    "rewrites": [
+      { "source": "**", "destination": "/index.html" }
+    ],
+    "headers": [
+      { "source": "/assets/**/*.@(js|css)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+      { "source": "/index.html", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] }
+    ]
+  }
+}

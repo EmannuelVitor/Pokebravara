@@ -1,0 +1,72 @@
+/* mypc.css — componentes compartilhados vivem em theme.css */
+
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+header { position: relative; margin-bottom: 30px; text-align: center; }
+
+/* --- PC bloqueado --- */
+.locked-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100dvh;
+    padding: 20px;
+    text-align: center;
+}
+.locked-container .lock-icon { width: 80px; height: 80px; margin-bottom: 20px; color: var(--accent); }
+.locked-container h1 { margin-bottom: 10px; }
+.locked-container p { max-width: 500px; margin-bottom: 30px; font-size: 1.15rem; color: var(--muted); }
+
+/* --- PC desbloqueado --- */
+.pc-layout { display: flex; flex-direction: column; gap: 30px; }
+.team-section, .pc-section { padding: 20px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); }
+.team-section h2, .pc-section h2 { margin: 0 0 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+.pokemon-grid { display: flex; flex-wrap: wrap; gap: 15px; }
+#team-grid { justify-content: center; min-height: 100px; }
+.pc-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); }
+
+.pokemon-slot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border: 3px dashed oklch(0.5 0.035 40);
+    border-radius: 50%;
+    background: var(--surface-raised);
+    transition: transform .2s, border-color .2s;
+}
+.pokemon-slot.occupied { border-style: solid; cursor: pointer; }
+.pokemon-slot.occupied:hover, .pokemon-slot:focus-visible { border-color: var(--accent); transform: scale(1.05); }
+.pokemon-slot.selected { border-color: var(--selected); box-shadow: 0 0 14px var(--glow); }
+.pokemon-slot img { width: 76%; height: 76%; object-fit: contain; image-rendering: pixelated; }
+
+.slot-tooltip {
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    z-index: 1;
+    padding: 5px 10px;
+    border-radius: var(--radius-sm);
+    background: oklch(0.1 0.01 40);
+    color: var(--ink);
+    font-size: .9rem;
+    text-align: center;
+    text-transform: capitalize;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-50%);
+    transition: opacity .2s;
+    pointer-events: none;
+}
+.pokemon-slot:hover .slot-tooltip, .pokemon-slot:focus-visible .slot-tooltip { visibility: visible; opacity: 1; }
+
+/* --- modal de detalhes --- */
+#details-modal .modal-content { width: 90%; max-width: 350px; }
+#details-image { width: 150px; height: 150px; margin-bottom: 10px; padding: 14px; border: 3px solid var(--border); border-radius: 50%; background: var(--surface-raised); object-fit: contain; image-rendering: pixelated; }
+#details-name { margin: 0; font-size: 1.8rem; text-transform: capitalize; color: var(--accent); }
+#details-info { margin-bottom: 15px; font-size: .9em; color: var(--muted); }
+.details-stats { margin: 20px 0; width: 100%; }
+.pokemon-location { display: inline-block; margin-top: 6px; padding: 2px 10px; border-radius: var(--radius-pill); background: var(--surface-raised); color: var(--accent); font-weight: 600; }

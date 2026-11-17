@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#100907">
+    <title>Menu principal · PokeBravara</title>
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body class="portal ">
+    <header class="portal-wrap topbar">
+        <a href="menu.html" class="brand"><span class="brand-mark" data-icon="brand"></span>PokeBravara</a>
+        <div class="profile" id="user-header" hidden>
+            <img id="user-avatar" class="avatar" alt="" hidden>
+            <div class="profile-text"><strong id="user-name-display"></strong><small id="user-level-display"></small></div>
+        </div>
+        <button id="sign-out" type="button" class="button" hidden>Sair</button>
+    </header>
+    <main class="portal-wrap portal-main">
+        <p id="menu-status" class="status" role="status">Carregando seu perfil…</p>
+        <button id="retry-profile" class="button" type="button" hidden>Tentar novamente</button>
+        <div id="main-menu" hidden>
+            <section id="dashboard" class="dashboard" aria-label="Resumo da sua aventura"></section>
+            <h2 class="section-heading" id="menu-heading">Ir para</h2>
+            <nav id="menu-buttons" class="menu-grid" aria-labelledby="menu-heading"></nav>
+        </div>
+        <section id="registration-panel" class="panel" aria-labelledby="register-title" hidden>
+            <h1 id="register-title">Crie seu perfil de treinador</h1>
+            <p class="status">Preencha os dados do seu personagem para iniciar a aventura.</p>
+            <form id="registration-form">
+                <div class="form-grid">
+                    <div class="form-group"><label for="real-name">Seu nome</label><input id="real-name" name="realName" autocomplete="name" required></div>
+                    <div class="form-group"><label for="trainer-name">Nome do personagem</label><input id="trainer-name" name="trainerName" required></div>
+                    <div class="form-group"><label for="char-gender">Gênero do personagem</label>
+                        <select id="char-gender" name="gender" required><option value="">Selecione</option><option>Masculino</option><option>Feminino</option><option>Não-binário</option></select>
+                    </div>
+                    <div class="form-group"><label for="char-age">Idade do personagem</label><input id="char-age" name="age" type="number" min="10" required></div>
+                    <div class="form-group"><label for="char-height">Altura do personagem (cm)</label><input id="char-height" name="height" type="number" min="100" required></div>
+                    <div class="form-group"><label for="char-image">Imagem do personagem</label><input id="char-image" name="image" type="file" accept="image/png,image/jpeg,image/gif" required></div>
+                </div>
+                <div class="form-group"><label for="char-desc">Descrição (opcional, até 180 caracteres)</label><textarea id="char-desc" name="description" rows="3" maxlength="180"></textarea></div>
+                <p id="registration-error" class="error" role="alert" hidden></p>
+                <button id="submit-btn" class="button primary" type="submit">Iniciar aventura</button>
+            </form>
+        </section>
+    </main>
+    <footer class="portal-wrap portal-footer">PokeBravara RPG</footer>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <script defer src="firebase-config.js"></script>
+    <script defer src="toast.js"></script>
+    <script defer src="database.js"></script>
+    <script defer src="utils.js"></script>
+    <script defer src="portal.js"></script>
+    <script defer src="menu.js"></script>
+</body>
+</html>

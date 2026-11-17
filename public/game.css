@@ -1,0 +1,91 @@
+body.game-page {
+    background: radial-gradient(ellipse at 84% 0%, oklch(0.27 0.06 40), transparent 42%), var(--background);
+    color: var(--ink);
+    font-family: var(--body);
+    overflow-wrap: anywhere;
+}
+.game-page h1 {
+    font: 700 clamp(2.1rem, 5.5vw, 3.5rem)/1.02 var(--display);
+    color: var(--ink);
+    text-shadow: none;
+    margin-block: 18px 24px;
+}
+.game-page h2 { font-family: var(--display); color: var(--ink); }
+.game-page .back-button {
+    position: static;
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    color: var(--ink);
+    background: var(--surface);
+    white-space: normal;
+}
+.game-page .back-button:hover { background: var(--surface-raised); }
+.game-page header, .game-page .header-top { gap: 12px; text-align: start; }
+.game-page .header-top, .game-page .header-bottom { text-align: start; }
+.game-page .header-top, .game-page #tabs-container, .game-page .modal-buttons { flex-wrap: wrap; }
+.game-page #search-container { text-align: start; }
+.game-page #search-input { width: min(100%, 240px); margin: 0 8px 8px 0; }
+.game-page #search-btn { margin: 0 0 8px; }
+.game-page .back-button, .game-page button, .game-page input:not([type=checkbox]), .game-page select { min-height: 44px; }
+.game-page .close-btn, .game-page .interaction-close-btn { min-width: 44px; min-height: 44px; }
+.game-page button:not([class]), .game-page .gm-btn { border-radius: var(--radius-md); }
+.game-page .spinner { border-color: var(--surface-raised); border-top-color: var(--accent); }
+.game-page .modal-overlay { inset: 0; padding: 12px; overflow: auto; }
+.game-page .modal-content {
+    width: min(100%, 800px);
+    max-height: calc(100dvh - 24px);
+    overflow: auto;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+}
+.game-page .modal-content.small-modal { max-width: 450px; }
+.game-page[data-page="mypc"] .modal-content { max-width: 420px; }
+.game-page[data-page="time"] .modal-content { max-width: 460px; }
+.game-page[data-page="pokedex"] #interaction-modal .modal-content { max-width: 480px; }
+.game-page #details-modal-content { padding: 24px; }
+.game-page .details-view { gap: 20px; }
+.game-page .details-info { flex: 1; min-width: 0; }
+.game-page .details-view #details-image { width: min(42%, 270px); height: auto; aspect-ratio: 1; align-self: center; }
+.game-page .stat-row { grid-template-columns: minmax(62px, auto) minmax(0, 1fr) 2.5ch; gap: 8px; }
+.game-page .stat-value { max-width: 100%; }
+.game-page .type-badge { color: #fff; text-shadow: 0 1px 2px #000; box-shadow: inset 0 0 0 100px #0007; }
+.game-page .team-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 245px), 1fr)); }
+.game-page .main-content, .game-page .pc-main-content, .game-page .pokemon-details-panel, .game-page .sidebar { min-width: 0; }
+.game-page[data-page="time"] .sidebar { height: auto; min-height: 0; scroll-margin-block-start: calc(var(--nav-h, 0px) + 16px); }
+.game-page[data-page="time"] .sidebar:target { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: var(--radius-md); }
+.game-page[data-page="pc"] .page-layout { height: auto; min-height: calc(100dvh - var(--nav-h, 0px)); align-items: stretch; }
+.game-page .pc-box-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 64px), 1fr)); }
+.game-page .locked-container { height: auto; min-height: 100dvh; }
+.game-page .profile-main, .game-page .profile-pokemon { min-width: 0; }
+.game-page .pokemon-card, .game-page .trainer-card, .game-page .team-pokemon-card, .game-page .team-section, .game-page .pc-section {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background-color: var(--surface);
+}
+.game-page .pokemon-card, .game-page .trainer-card { min-width: 0; }
+.game-page [role=button] { cursor: pointer; }
+.game-page .page-feedback { margin: 16px auto; max-width: 70ch; padding-inline: 16px; }
+.game-page .trainer-card img, .game-page #trainer-list img, .game-page #details-avatar { object-fit: cover; background: var(--surface-raised); }
+.game-page img[data-image-failed] { opacity: 0; }
+.game-page .slot-tooltip, .game-page .pokemon-slot-tooltip { pointer-events: none; }
+@media (max-width: 1050px) {
+    .game-page[data-page="pc"] .page-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, .65fr); }
+    .game-page[data-page="pc"] .sidebar { grid-column: 1 / -1; width: auto; }
+    .game-page[data-page="pc"] .pokemon-details-panel { width: auto; }
+}
+@media (max-width: 640px) {
+    .game-page .container, .game-page .main-content, .game-page .pc-main-content { padding: 16px; }
+    .game-page #pokedex-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)); gap: 10px; }
+    .game-page .details-view { flex-direction: column; }
+    .game-page .details-view #details-image { width: min(48%, 160px); }
+    .game-page .details-layout, .game-page[data-page="pc"] .page-layout { grid-template-columns: minmax(0, 1fr); }
+    .game-page .modal-content, .game-page #details-modal-content { padding: 18px; }
+    .game-page .team-header, .game-page .profile-links { flex-wrap: wrap; gap: 8px; }
+}

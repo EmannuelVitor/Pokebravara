@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeBravara - Gerenciar Treinadores</title>
+    <link rel="stylesheet" href="trainers.css">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body class="game-page" data-page="trainers">
+    <p id="page-feedback" class="page-feedback error" role="alert" hidden><span></span> <a class="back-button" href="menu.html">Voltar ao menu</a></p>
+    <div class="container">
+        <header>
+            <h1>Painel de Treinadores</h1>
+            <p id="trainers-count" class="status"></p>
+        </header>
+        <main id="trainers-grid"></main>
+        <div id="spinner" class="spinner-container hidden">
+            <div class="spinner"></div><p>Carregando…</p>
+        </div>
+    </div>
+
+    <!-- Modal para Detalhes do Treinador -->
+    <div id="details-modal" class="modal-overlay hidden" aria-labelledby="details-trainer-name">
+        <div class="modal-content">
+            <button id="details-close-btn" class="close-btn" aria-label="Fechar">&times;</button>
+            <div class="details-layout">
+                <div class="profile-main">
+                    <img id="details-avatar" src="" alt="Avatar">
+                    <h2 id="details-trainer-name"></h2>
+                    <!-- Ficha Completa do Personagem -->
+                    <p class="real-name-display">Nome Real: <span id="details-real-name"></span></p>
+                    <div class="profile-tags">
+                        <span id="details-age"></span>
+                        <span id="details-height"></span>
+                        <span id="details-gender"></span>
+                    </div>
+                    <p class="field-label" id="details-desc-label">Descrição</p>
+                    <p id="details-desc"></p>
+                    <!-- Controles do Professor -->
+                    <div class="gm-controls">
+                        <div class="control-group"><label for="campaign-select">Campanha</label><select id="campaign-select"><option value="Brasa">Brasa</option><option value="Fogo">Fogo</option></select></div>
+                        <div class="control-group"><label for="pc-toggle">PC liberado</label><label class="switch"><input type="checkbox" id="pc-toggle"><span class="slider round"></span></label></div>
+                    </div>
+                    <!-- BOTÕES ADICIONADOS AQUI -->
+                    <div class="profile-links">
+                        <a href="pc.html" id="pc-link" class="gm-btn">Ver PC</a>
+                        <a href="bag.html" id="bag-link" class="gm-btn">Ver Mochila</a>
+                    </div>
+                </div>
+                <div class="profile-pokemon">
+                    <div class="team-header">
+                        <h3>Time Pokémon</h3>
+                        <button id="heal-all-btn" class="gm-btn heal-btn">Curar Todos</button>
+                    </div>
+                    <div id="details-pokemon-team"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Editar Dano/Status do Pokémon -->
+    <div id="edit-pokemon-modal" class="modal-overlay hidden" aria-labelledby="edit-pkmn-title">
+        <div class="modal-content small-modal">
+            <button id="edit-pkmn-close-btn" class="close-btn" aria-label="Fechar">&times;</button>
+            <h3 id="edit-pkmn-title">Gerenciar Pokémon</h3>
+            <form id="edit-pokemon-form">
+                <div class="form-group">
+                    <label for="edit-currentHp">HP Atual:</label>
+                    <input type="number" id="edit-currentHp" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="edit-status">Status:</label>
+                    <select id="edit-status">
+                        <option value="none">Nenhum</option>
+                        <option value="poisoned">Envenenado</option>
+                        <option value="paralyzed">Paralisado</option>
+                        <option value="burned">Queimado</option>
+                        <option value="asleep">Dormindo</option>
+                        <option value="frozen">Congelado</option>
+                        <option value="fainted">Caído</option>
+                    </select>
+                </div>
+                <button type="submit" class="gm-btn">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
+
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script defer src="database.js"></script>
+    <script defer src="utils.js"></script>
+    <script defer src="firebase-config.js"></script>
+    <script defer src="toast.js"></script>
+    <script defer src="nav.js"></script>
+    <script defer src="game-ui.js"></script>
+    <script defer src="trainers.js"></script>
+</body>
+</html>
+

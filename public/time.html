@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeBravara - Meu Time</title>
+    <link rel="stylesheet" href="time.css">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body class="game-page" data-page="time">
+    <p id="page-feedback" class="page-feedback error" role="alert" hidden><span></span> <a class="back-button" href="menu.html">Voltar ao menu</a></p>
+
+    <div id="spinner" class="spinner-container">
+        <div class="spinner"></div>
+        <p>Carregando…</p>
+    </div>
+
+    <div id="page-container" class="page-layout hidden">
+        <main class="main-content">
+            <header>
+                <h1>Meu Time Pokémon</h1>
+            </header>
+            <div id="team-grid" class="team-grid">
+                <!-- Os 6 Pokémon do time serão gerados aqui -->
+            </div>
+        </main>
+
+        <aside class="sidebar" id="mochila" aria-labelledby="bag-heading">
+            <h2 id="bag-heading">Mochila</h2>
+            <div id="bag-items" class="bag-items">
+                <!-- Itens da mochila serão gerados aqui -->
+            </div>
+            <div id="bag-placeholder" class="bag-placeholder">
+                <p>Sua mochila está vazia.</p>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modal de confirmação -->
+    <div id="confirmation-modal" class="modal-overlay hidden" aria-labelledby="modal-message">
+        <div class="modal-content">
+            <p id="modal-message"></p>
+            <div class="modal-buttons">
+                <button id="confirm-btn">Sim</button>
+                <button id="cancel-btn">Não</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts do Firebase -->
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    
+    <!--
+      ORDEM DE SCRIPTS CORRIGIDA:
+      1. Carrega a base de dados de Pokémon primeiro.
+      2. Depois, carrega a lógica da página que USA essa base de dados.
+    -->
+    <script defer src="database.js"></script>
+    <script defer src="utils.js"></script>
+    <script defer src="firebase-config.js"></script>
+    <script defer src="toast.js"></script>
+    <script defer src="nav.js"></script>
+    <script defer src="game-ui.js"></script>
+    <script defer src="time.js"></script>
+
+</body>
+</html>
+

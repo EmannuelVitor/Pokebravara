@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#100907">
+    <title>ID de Treinador · PokeBravara</title>
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body class="portal ">
+    <main class="portal-wrap portal-main">
+        <p id="record-status" class="status" role="status">Carregando cartão de treinador…</p>
+        <article id="trainer-record" class="panel" hidden>
+            <img id="trainer-photo" class="profile-photo" alt="" hidden>
+            <p class="hero-tag">ID de Treinador</p>
+            <h1 id="trainer-title"></h1>
+            <dl id="trainer-facts" class="profile-facts"></dl>
+            <p id="trainer-description"></p>
+        </article>
+    </main>
+    <footer class="portal-wrap portal-footer">PokeBravara RPG</footer>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script defer src="firebase-config.js"></script>
+    <script defer src="toast.js"></script>
+    <script defer src="utils.js"></script>
+    <script defer src="nav.js"></script>
+    <script defer src="portal.js"></script>
+    <script defer src="trainer-record.js"></script>
+</body>
+</html>

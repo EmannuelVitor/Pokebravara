@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeBravara - PC dos Treinadores</title>
+    <link rel="stylesheet" href="pc.css">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body class="game-page" data-page="pc">
+    <p id="page-feedback" class="page-feedback error" role="alert" hidden><span></span> <a class="back-button" href="menu.html">Voltar ao menu</a></p>
+
+    <div id="spinner" class="spinner-container">
+        <div class="spinner"></div>
+        <p>Carregando…</p>
+    </div>
+
+    <div class="page-layout hidden">
+        <aside class="sidebar">
+            <h2>Treinadores</h2>
+            <ul id="trainer-list"></ul>
+            <button id="add-pokemon-btn" class="gm-btn add-btn hidden">+ Adicionar Pokémon</button>
+        </aside>
+
+        <main class="pc-main-content">
+            <h1 id="pc-title">Selecione um treinador para ver o Time e o PC</h1>
+            <div id="trainer-display" class="hidden">
+                <div class="trainer-team-section">
+                    <h3>Time Atual</h3>
+                    <div id="trainer-team-grid"></div>
+                </div>
+    
+                <div class="pc-box-container">
+                    <h3>PC Box</h3>
+                    <div class="pc-box-grid" id="pc-box-grid"></div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="pokemon-details-panel" id="pokemon-details-panel">
+            <div class="panel-placeholder">Selecione um Pokémon</div>
+            <div class="panel-content hidden">
+                <img id="details-image" src="" alt="Pokémon Sprite">
+                <h3 id="details-name"></h3>
+                <p id="details-info"></p>
+                <div class="details-stats" id="details-stats"></div>
+                <div class="details-actions">
+                    <button id="move-to-pc-btn" class="gm-btn hidden">Mover para o PC</button>
+                    <button id="move-to-team-btn" class="gm-btn hidden">Mover para o Time</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+    
+    <!-- Modal para Adicionar Pokémon -->
+    <div id="add-pokemon-modal" class="modal-overlay hidden" aria-labelledby="add-pokemon-title">
+        <div class="modal-content small-modal">
+            <button id="add-pkmn-close-btn" class="close-btn" aria-label="Fechar">&times;</button>
+            <h3 id="add-pokemon-title">Adicionar Pokémon</h3>
+            <form id="add-pokemon-form">
+                <div class="form-group"><label for="pokemon-select">Pokémon:</label><select id="pokemon-select" required></select></div>
+                <div class="form-group"><label for="pokemon-level">Nível:</label><input type="number" id="pokemon-level" value="5" min="1" max="100" required></div>
+                <div class="form-group"><label for="pokemon-nickname">Apelido (opcional):</label><input type="text" id="pokemon-nickname"></div>
+                <div class="form-group checkbox-group"><input type="checkbox" id="pokemon-shiny"><label for="pokemon-shiny">É Shiny?</label></div>
+                <button type="submit" class="gm-btn">Adicionar</button>
+            </form>
+        </div>
+    </div>
+
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    
+    <script defer src="database.js"></script>
+    <script defer src="utils.js"></script>
+    <script defer src="firebase-config.js"></script>
+    <script defer src="toast.js"></script>
+    <script defer src="nav.js"></script>
+    <script defer src="game-ui.js"></script>
+    <script defer src="pc.js"></script>
+</body>
+</html>
+
